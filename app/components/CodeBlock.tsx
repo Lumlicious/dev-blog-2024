@@ -8,7 +8,20 @@ interface CodeBlockProps {
 
 const CodeBlock = ({ language, codestring }: CodeBlockProps) => {
   return (
-    <SyntaxHighlighter language={language} style={vscDarkPlus} PreTag="div">
+    <SyntaxHighlighter
+      language={language}
+      style={vscDarkPlus}
+      customStyle={{
+        fontSize: "1em",
+      }}
+      codeTagProps={{
+        style: {
+          fontSize: "inherit",
+        },
+      }}
+      PreTag="div"
+      showLineNumbers={true}
+    >
       {codestring}
     </SyntaxHighlighter>
   );

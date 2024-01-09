@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       {/* <body className={inter.className}>{children}</body> */}
-      <body className="bg-slate-50 dark:bg-slate-900">
+      <body className={inter.className}>
         <header className="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full text-sm">
           <NavBar />
         </header>

@@ -30,7 +30,7 @@ const config: Config = {
               color: 'rgb(31, 41, 55)',
             },
             pre: {
-              padding: '0'
+              padding: '0',
             }
           }
         }
