@@ -59,7 +59,6 @@ export const getAllPublished = async (): Promise<PostMetadata[]> => {
   
       return allTags;
     };
-    console.log(post)
   
     return {
       id: post.id,
@@ -117,7 +116,6 @@ export const getSingleBlogPostBySlug = async (slug: string): Promise<SinglePost>
       },
     },
   });
-  console.log('RESPONSE', response)
   const page: any = response.results[0];
   const metadata = getPageMetaData(page);
   const mdblocks = await n2m.pageToMarkdown(page.id);
@@ -128,3 +126,85 @@ export const getSingleBlogPostBySlug = async (slug: string): Promise<SinglePost>
     markdown: mdString,
   };
 };
+
+export const getBooks = async (year: string, state: string, type: string,) => {
+  const books = await notion.databases.query({
+    database_id: process.env.BOOK_DB_ID || '',
+    filter: {
+      and : [
+        {
+          property: "Media Type",
+          select: {
+            equals: type
+          }
+        },
+        {
+          property: "State",
+          select: {
+            equals: state
+          }
+        },   
+        {
+          property: "Date Finished",
+          date: {
+            after: `${year}-01-01`
+          }
+        },
+        {
+          property: "Date Finished",
+          date: {
+            before: `${year}-12-31`
+          }
+        },
+      ]
+    },
+    sorts: [
+      {
+        property: "Date Finished",
+        direction: "ascending",
+      },
+    ],
+  })
+
+  const allBooks = books.results;
+  return allBooks.map((book) => {
+    return getBookMetadata(book);
+  });
+}
+
+export const getBookMetadata = (book) => {
+  const coverFile = book.properties.Image.files[0]
+  const coverURL = coverFile.type === 'external' ? coverFile.external.url : coverFile.file.url
+  const bookData = {
+    title: book.properties.Title.title[0].plain_text,
+    cover: coverURL,
+    review: book.properties.Review.select?.name
+  }
+
+  return bookData;
+}
+
+export const getCurrentBook = async () => {
+  const books = await notion.databases.query({
+    database_id: process.env.BOOK_DB_ID || '',
+    filter: {
+      and : [
+        {
+          property: "Media Type",
+          select: {
+            equals: 'Book'
+          }
+        },
+        {
+          property: "State",
+          select: {
+            equals: 'Currently Reading'
+          }
+        },   
+      ]
+    }
+  })
+  const currentBook = books.results[0]
+  return getBookMetadata(currentBook);
+}
+

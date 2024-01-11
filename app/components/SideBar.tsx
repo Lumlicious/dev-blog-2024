@@ -61,7 +61,7 @@ const SideBar = async () => {
                 <div className="space-y-6">
                     {lastThreePosts.map((post) => (
                         <Link
-                            href={''}
+                            href={`/blog/${post.slug}`}
                             key={post.id}
                             className="group flex items-center gap-x-6"
                         >
