@@ -5,6 +5,7 @@ import Link from 'next/link'
 
 const NavBar = () => {
     const isActivePath = useActivePath()
+    const currentYear = new Date().getFullYear().toString()
     const navItems = [
         {
             title: 'Home',
@@ -16,7 +17,11 @@ const NavBar = () => {
         },
         {
             title: 'Reading List',
-            href: '/books',
+            href: `/books/${currentYear.toString()}`,
+        },
+        {
+            title: 'About',
+            href: '/about',
         },
     ]
     const getActiveClass = (path: string) => {
