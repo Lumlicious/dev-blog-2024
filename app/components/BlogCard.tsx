@@ -45,7 +45,7 @@ const BlogCard = ({ post }: BlogCardProps) => {
                     </p>
 
                     <div className="mt-5 sm:mt-auto">
-                        <div className="flex items-center">
+                        <div className="flex items-center lg:mt-4">
                             <div className="flex-shrink-0">
                                 <Image
                                     src="https://images.unsplash.com/photo-1586232702178-f044c5f4d4b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80"

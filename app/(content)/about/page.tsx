@@ -20,6 +20,7 @@ const About = async () => {
                     alt=""
                     width={600}
                     height={800}
+                    className="rounded-md"
                 />
                 <div className="lg:col-span-2">
                     <div className="py-8 lg:pe-4 lg:pe-8">

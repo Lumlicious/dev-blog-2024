@@ -1,21 +1,23 @@
-import { getAllPublished } from '@/util/notion'
+import { getAllPublished, getCurrentBook } from '@/util/notion'
 import Image from 'next/image'
 import Link from 'next/link'
 
 const SideBar = async () => {
     const res = await getAllPublished()
     const lastThreePosts = res.slice(0, 3)
+    const currentBook = await getCurrentBook()
+    console.log(currentBook)
     return (
         <div className="lg:col-span-1 lg:w-full lg:h-full lg:bg-gradient-to-r lg:from-gray-100 lg:via-transparent lg:to-transparent dark:from-slate-800 m-4 rounded">
             <div className="sticky top-0 start-0 py-8 lg:ps-4 lg:ps-8">
                 <div className="group flex items-center gap-x-3 border-b border-gray-200 pb-8 mb-8 dark:border-gray-700">
                     <a className="block flex-shrink-0" href="#">
                         <Image
-                            className="h-10 w-10 rounded-full"
+                            className="h-16 w-16 rounded-full"
                             src="/NewPixelMeCrop.gif"
                             alt="Chad Avatar"
-                            width="50"
-                            height="50"
+                            width="80"
+                            height="80"
                         />
                     </a>
 
@@ -31,7 +33,7 @@ const SideBar = async () => {
 
                     <div className="grow">
                         <div className="flex justify-end">
-                            <button
+                            {/* <button
                                 type="button"
                                 className="py-1.5 px-2.5 inline-flex items-center gap-x-2 text-xs font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                             >
@@ -53,12 +55,15 @@ const SideBar = async () => {
                                     <line x1="22" x2="16" y1="11" y2="11" />
                                 </svg>
                                 Follow
-                            </button>
+                            </button> */}
                         </div>
                     </div>
                 </div>
 
                 <div className="space-y-6">
+                    <h3 className="text-2xl font-semibold dark:text-white">
+                        Latest from the Blog
+                    </h3>
                     {lastThreePosts.map((post) => (
                         <Link
                             href={`/blog/${post.slug}`}
@@ -82,6 +87,27 @@ const SideBar = async () => {
                             </div>
                         </Link>
                     ))}
+                </div>
+                <div className="space-y-6 border-t mt-8 pt-8">
+                    <h3 className="text-2xl font-semibold dark:text-white">
+                        Currently Reading
+                    </h3>
+                    <div className="group flex flex-col items-center gap-x-6">
+                        <div className="flex-shrink-0 relative rounded-lg overflow-hidden w-40 h-60 mb-4">
+                            <Image
+                                className="w-full h-full absolute top-0 start-0 object-cover rounded-lg"
+                                src={currentBook.cover || ''}
+                                alt="Chad Avatar"
+                                width="400"
+                                height="400"
+                            />
+                        </div>
+                        <div className="grow">
+                            <span className=" text-center text-md font-bold text-gray-800 dark:text-gray-200">
+                                {currentBook.title}
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
