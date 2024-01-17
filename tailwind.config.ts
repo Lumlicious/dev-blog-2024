@@ -14,7 +14,7 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
-      typography: (theme) => ({
+      typography: () => ({
         DEFAULT: {
           css: {
             code: {
