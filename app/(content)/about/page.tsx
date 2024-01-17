@@ -12,7 +12,7 @@ const About = async () => {
                         About Me
                     </h1>
                     <p className="mt-1 text-gray-600 dark:text-gray-400">
-                        Here's some info about who I am.
+                        Here&#39;s some info about who I am.
                     </p>
                 </div>
                 <div className="grid lg:grid-cols-3 gap-y-8 lg:gap-y-0 lg:gap-x-6 lg:gap-x-12">

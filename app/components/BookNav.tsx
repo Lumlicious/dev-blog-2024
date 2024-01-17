@@ -2,7 +2,12 @@
 
 import Link from 'next/link'
 
-const BookNav = ({ currentYear, selectedYear }) => {
+interface BookNavParams {
+    currentYear: string
+    selectedYear: string
+}
+
+const BookNav = ({ currentYear, selectedYear }: BookNavParams) => {
     const STARTING_YEAR = 2022
     const currentYearInt = parseInt(currentYear)
     const selectedYearInt = parseInt(selectedYear)

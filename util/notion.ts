@@ -1,5 +1,7 @@
 import { Client } from '@notionhq/client';
+import { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints';
 import { NotionToMarkdown } from "notion-to-md";
+import { MdStringObject } from 'notion-to-md/build/types';
 
 export interface TagData {
     name: string,
@@ -8,7 +10,7 @@ export interface TagData {
 
 export interface SinglePost {
   metadata: PostMetadata,
-  markdown: string,
+  markdown: MdStringObject,
 }
 
 export interface PostMetadata {
@@ -172,7 +174,7 @@ export const getBooks = async (year: string, state: string, type: string,) => {
   });
 }
 
-export const getBookMetadata = (book) => {
+export const getBookMetadata = (book: any) => {
   const coverFile = book.properties.Image.files[0]
   const coverURL = coverFile.type === 'external' ? coverFile.external.url : coverFile.file.url
   const bookData = {

@@ -3,11 +3,11 @@
 import ReactMarkdown from 'react-markdown'
 import CodeBlock from './CodeBlock'
 
-const MarkdownContent = ({ markdown }) => {
+const MarkdownContent = ({ markdown }: any) => {
     return (
         <ReactMarkdown
             components={{
-                code({ node, inline, className, children, ...props }) {
+                code({ node, inline, className, children, ...props }: any) {
                     const match = /language-(\w+)/.exec(className || '')
                     return !inline && match ? (
                         <CodeBlock

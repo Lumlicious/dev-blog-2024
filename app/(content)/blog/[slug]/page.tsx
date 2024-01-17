@@ -3,7 +3,13 @@ import SideBar from '@/app/components/SideBar'
 import { getSingleBlogPostBySlug } from '@/util/notion'
 import Link from 'next/link'
 
-const BlogPage = async ({ params }) => {
+interface BlogPageParams {
+    params: {
+        slug: string
+    }
+}
+
+const BlogPage = async ({ params }: BlogPageParams) => {
     const { slug } = params
 
     const data = await getSingleBlogPostBySlug(slug)

@@ -1,7 +1,12 @@
 'use client'
 
 import { useParams } from 'next/navigation'
-const BooksLayout = ({ children }) => {
+import { ReactNode } from 'react'
+
+interface BooksLayoutProps {
+    children?: ReactNode
+}
+const BooksLayout = ({ children }: BooksLayoutProps) => {
     const { year } = useParams()
     return (
         <main className="shrink-0">
@@ -11,7 +16,7 @@ const BooksLayout = ({ children }) => {
                         The {year} Reading List
                     </h2>
                     <p className="mt-1 text-gray-600 dark:text-gray-400">
-                        What I've been reading lately.
+                        What I&#39;ve been reading lately.
                     </p>
                 </div>
                 {children}

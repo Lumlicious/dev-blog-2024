@@ -14,7 +14,7 @@ export default async function Home() {
                         The Dev Blog
                     </h2>
                     <p className="mt-1 text-gray-600 dark:text-gray-400">
-                        Some of the stuff I've been working on or important
+                        Some of the stuff I&#39;ve been working on or important
                         information I want to share. Usually just cool stuff I
                         like.
                     </p>

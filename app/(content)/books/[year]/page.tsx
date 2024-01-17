@@ -2,7 +2,13 @@ import BookCard from '@/app/components/BookCard'
 import BookNav from '@/app/components/BookNav'
 import { getBooks, getCurrentBook } from '@/util/notion'
 
-const BooksInYear = async ({ params }) => {
+interface BooksInYearParams {
+    params: {
+        year: string
+    }
+}
+
+const BooksInYear = async ({ params }: BooksInYearParams) => {
     const { year } = params
     const currentYear = new Date().getFullYear().toString()
     const books = await getBooks(year, 'Read', 'Book')
