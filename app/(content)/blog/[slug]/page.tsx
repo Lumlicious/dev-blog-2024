@@ -12,7 +12,7 @@ const BlogPage = async ({ params }) => {
     return (
         <main className="shrink-0">
             <div className="max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto bg-white">
-                <div className="grid lg:grid-cols-3 gap-y-8 lg:gap-y-0 lg:gap-x-6 lg:gap-x-12">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-8 lg:gap-y-0 lg:gap-x-6 lg:gap-x-12">
                     <div className="lg:col-span-2">
                         <div className="py-8 lg:pe-4 lg:pe-8">
                             <div className="space-y-5 lg:space-y-8">
@@ -57,23 +57,12 @@ const BlogPage = async ({ params }) => {
                                 <div className="prose max-w-none">
                                     <MarkdownContent markdown={markdown} />
                                 </div>
-
-                                <div className="grid lg:flex lg:justify-between lg:items-center gap-y-5 lg:gap-y-0">
-                                    <div>
-                                        {tags.map((tag) => (
-                                            <p
-                                                key={tag.name}
-                                                className="inline-flex items-center gap-1.5 py-1 px-3 sm:py-2 sm:px-4 rounded-full text-xs sm:text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-800 dark:text-gray-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 mr-4"
-                                            >
-                                                {tag.name}
-                                            </p>
-                                        ))}
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
-                    <SideBar />
+                    <div className="lg:col-span-1 lg:w-full lg:h-full ">
+                        <SideBar />
+                    </div>
                 </div>
             </div>
         </main>

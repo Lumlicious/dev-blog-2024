@@ -8,7 +8,7 @@ const SideBar = async () => {
     const currentBook = await getCurrentBook()
     console.log(currentBook)
     return (
-        <div className="lg:col-span-1 lg:w-full lg:h-full lg:bg-gradient-to-r lg:from-gray-100 lg:via-transparent lg:to-transparent dark:from-slate-800 m-4 rounded">
+        <div className="lg:w-full lg:h-full lg:bg-gradient-to-r lg:from-gray-100 lg:via-transparent lg:to-transparent dark:from-slate-800 m-4 rounded">
             <div className="sticky top-0 start-0 py-8 lg:ps-4 lg:ps-8">
                 <div className="group flex items-center gap-x-3 border-b border-gray-200 pb-8 mb-8 dark:border-gray-700">
                     <a className="block flex-shrink-0" href="#">
