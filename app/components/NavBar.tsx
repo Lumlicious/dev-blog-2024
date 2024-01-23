@@ -2,6 +2,7 @@
 
 import { useActivePath } from '@/util/helper'
 import Link from 'next/link'
+import DarkMode from './DarkMode'
 
 const NavBar = () => {
     const isActivePath = useActivePath()
@@ -38,7 +39,7 @@ const NavBar = () => {
         >
             <div className="flex items-center justify-between">
                 <Link
-                    href="/blog"
+                    href="/"
                     className="flex-none text-xl font-semibold text-white"
                     aria-label="Brand"
                 >
@@ -103,6 +104,9 @@ const NavBar = () => {
                             {item.title}
                         </Link>
                     ))}
+                    <div className="">
+                        <DarkMode />
+                    </div>
                 </div>
             </div>
         </nav>
