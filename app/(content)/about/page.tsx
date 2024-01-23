@@ -2,6 +2,11 @@ import MarkdownContent from '@/app/components/Markdown'
 import { SinglePost, getSingleBlogPostBySlug } from '@/util/notion'
 import Image from 'next/image'
 
+export const metadata = {
+    title: 'About Me',
+    description: `Here's some info about who I am`,
+}
+
 const About = async () => {
     const rawPost: SinglePost = await getSingleBlogPostBySlug('about-page')
     return (

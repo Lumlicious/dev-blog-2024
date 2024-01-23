@@ -1,8 +1,10 @@
 import { getAllPublished } from '@/util/notion'
-import NavBar from '../../components/NavBar'
-import HeroBlogItem from '../../components/HeroBlogItem'
-import Image from 'next/image'
 import BlogCard from '../../components/BlogCard'
+
+export const metadata = {
+    title: 'The Blog',
+    description: `Some stuff I've been working on`,
+}
 
 export default async function Home() {
     const res = await getAllPublished()

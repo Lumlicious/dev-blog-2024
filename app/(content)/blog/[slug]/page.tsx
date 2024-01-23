@@ -3,10 +3,27 @@ import SideBar from '@/app/components/SideBar'
 import { getSingleBlogPostBySlug } from '@/util/notion'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Metadata, ResolvingMetadata } from 'next'
 
 interface BlogPageParams {
     params: {
         slug: string
+    }
+}
+
+export async function generateMetadata(
+    { params }: BlogPageParams,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+    // read route params
+    const slug = params.slug
+
+    // fetch data
+    const data = await getSingleBlogPostBySlug(slug)
+    const { title } = data.metadata
+
+    return {
+        title: title,
     }
 }
 

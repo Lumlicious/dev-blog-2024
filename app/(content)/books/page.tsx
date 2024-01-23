@@ -1,6 +1,11 @@
 import BookCard from '@/app/components/BookCard'
 import { getBooks, getCurrentBook } from '@/util/notion'
 
+export const metadata = {
+    title: 'Reading List',
+    description: `What I've been reading lately`,
+}
+
 const Books = async () => {
     const currentYear = new Date().getFullYear().toString()
     const books = await getBooks(currentYear, 'Read', 'Book')
