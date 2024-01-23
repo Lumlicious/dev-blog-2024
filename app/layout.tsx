@@ -17,12 +17,13 @@ export default function RootLayout({
 }) {
     return (
         <html className="h-full">
-            <body className={`${inter.className} flex flex-col h-full`}>
+            <body
+                className={`${inter.className} flex flex-col h-full dark:bg-slate-900`}
+            >
                 <header className="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-blue-600 text-sm py-3 sm:py-0">
                     <NavBar />
                 </header>
-
-                {children}
+                <main className="shrink-0">{children}</main>
                 <Footer />
             </body>
             <PrelineScript />
