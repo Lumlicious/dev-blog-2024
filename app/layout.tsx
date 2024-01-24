@@ -21,7 +21,7 @@ export default function RootLayout({
             <body
                 className={`${inter.className} flex flex-col h-full dark:bg-slate-900`}
             >
-                <header className="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-blue-600 text-sm py-3 sm:py-0">
+                <header className="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-red-500 text-sm py-3 sm:py-0">
                     <NavBar />
                 </header>
                 <main className="shrink-0">{children}</main>

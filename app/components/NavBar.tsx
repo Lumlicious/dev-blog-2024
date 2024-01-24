@@ -3,6 +3,13 @@
 import { useActivePath } from '@/util/helper'
 import Link from 'next/link'
 import DarkMode from './DarkMode'
+import Image from 'next/image'
+import { Geologica } from 'next/font/google'
+
+const titleFont = Geologica({
+    subsets: ['latin'],
+    display: 'swap',
+})
 
 const NavBar = () => {
     const isActivePath = useActivePath()
@@ -37,13 +44,23 @@ const NavBar = () => {
             className="relative max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8"
             aria-label="Global"
         >
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between ">
+                <div>
+                    <Image
+                        className="flex-none min-w-12"
+                        src="/NewPixelMe.gif"
+                        alt="Chad Avatar"
+                        width="80"
+                        height="80"
+                    />
+                </div>
                 <Link
                     href="/"
-                    className="flex-none text-xl font-semibold text-white"
+                    className={`flex-none text-4xl font-semibold text-white text-center sm:text-left ${titleFont.className}`}
                     aria-label="Brand"
                 >
-                    Chad Lumley
+                    <div className="mb-0 leading-8">CHAD</div>
+                    <div className="mb-0 leading-8">LUMLEY</div>
                 </Link>
 
                 <div className="sm:hidden">
