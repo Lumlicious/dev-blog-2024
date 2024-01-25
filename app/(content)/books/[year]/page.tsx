@@ -22,7 +22,11 @@ const BooksInYear = async ({ params }: BooksInYearParams) => {
                     <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-6 mb-10 lg:mb-14">
                         {currentBooks &&
                             currentBooks.map((book) => (
-                                <BookCard data={book} current={true} />
+                                <BookCard
+                                    key={book.title}
+                                    data={book}
+                                    current={true}
+                                />
                             ))}
                         {books.map((book) => (
                             <BookCard key={book.title} data={book} />
