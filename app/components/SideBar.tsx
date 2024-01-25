@@ -5,8 +5,7 @@ import Link from 'next/link'
 const SideBar = async () => {
     const res = await getAllPublished()
     const lastThreePosts = res.slice(0, 3)
-    const currentBook = await getCurrentBook()
-    console.log(currentBook)
+    const currentBooks = await getCurrentBook()
     return (
         <div className="lg:w-full lg:h-full lg:bg-gradient-to-r lg:from-gray-100 lg:via-transparent lg:to-transparent dark:from-slate-800 m-4 rounded">
             <div className="sticky top-0 start-0 py-8 lg:ps-4 lg:ps-8">
@@ -96,7 +95,7 @@ const SideBar = async () => {
                         <div className="flex-shrink-0 relative rounded-lg overflow-hidden w-40 h-60 mb-4">
                             <Image
                                 className="w-full h-full absolute top-0 start-0 object-cover rounded-lg"
-                                src={currentBook.cover || ''}
+                                src={currentBooks[0].cover || ''}
                                 alt="Chad Avatar"
                                 width="400"
                                 height="400"
@@ -104,7 +103,7 @@ const SideBar = async () => {
                         </div>
                         <div className="grow">
                             <span className=" text-center text-md font-bold text-gray-800 dark:text-gray-200">
-                                {currentBook.title}
+                                {currentBooks[0].title}
                             </span>
                         </div>
                     </div>

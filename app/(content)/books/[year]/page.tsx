@@ -12,7 +12,7 @@ const BooksInYear = async ({ params }: BooksInYearParams) => {
     const { year } = params
     const currentYear = new Date().getFullYear().toString()
     const books = await getBooks(year, 'Read', 'Book')
-    const currentBook = year === currentYear ? await getCurrentBook() : null
+    const currentBooks = year === currentYear ? await getCurrentBook() : null
 
     return (
         <>
@@ -20,9 +20,10 @@ const BooksInYear = async ({ params }: BooksInYearParams) => {
                 <>
                     <BookNav currentYear={currentYear} selectedYear={year} />
                     <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-6 mb-10 lg:mb-14">
-                        {currentBook && (
-                            <BookCard data={currentBook} current={true} />
-                        )}
+                        {currentBooks &&
+                            currentBooks.map((book) => (
+                                <BookCard data={book} current={true} />
+                            ))}
                         {books.map((book) => (
                             <BookCard key={book.title} data={book} />
                         ))}

@@ -206,7 +206,10 @@ export const getCurrentBook = async () => {
       ]
     }
   })
-  const currentBook = books.results[0]
-  return getBookMetadata(currentBook);
+  const currentBooks = books.results
+  
+  return currentBooks.map((book) => {
+    return getBookMetadata(book);
+  });
 }
 
